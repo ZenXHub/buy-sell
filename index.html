@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeShop | Quality Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-container {
+            position: relative;
+            width: 250px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding-left: 40px;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            width: 300px;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-large {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 200px;
+            width: 100%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Search Results */
+        .search-results {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-results h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        /* Authentication Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .form-footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        /* User Dashboard */
+        .dashboard {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            margin-top: 8px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container {
+                width: 60%;
+            }
+
+            .search-input:focus {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-store"></i>
+                    ZenX
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                    </div>
+                    <div class="auth-buttons">
+                        <button class="btn btn-outline" id="loginBtn">Log In</button>
+                        <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Quality Products at Affordable Prices</h1>
+            <p>Discover our premium collection of products designed to enhance your lifestyle. Shop with confidence and enjoy fast delivery.</p>
+            <button class="btn btn-primary btn-large">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section class="container" id="searchResultsSection" style="display: none;">
+        <div class="search-results">
+            <h3>Search Results for "<span id="searchQuery"></span>"</h3>
+            <div class="products" id="searchResults">
+                <!-- Search results will be displayed here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container">
+        <h2 class="section-title" id="products">Featured Products</h2>
+        <div class="products" id="productsContainer">
+            <!-- Product 1 -->
+            <div class="product-card" data-name="laptop" data-category="electronics">
+                <div class="product-img">
+                    <img src="images/massager.jpg" alt="Premium Laptop">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ZenBeats</h3>
+                    <div class="product-price">₹4999</div>
+                    <p class="product-description">Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.</p>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card" data-name="headphones" data-category="electronics">
+                <div class="product-img">
+                    <img src="images/charger.jpg" alt="Wireless Headphones">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ZenBeats Charger</h3>
+                    <div class="product-price">₹499</div>
+                    <p class="product-description">Simply place your device on the cradle to power up. No ports, no cables.</p>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card" data-name="smartphone" data-category="electronics">
+                <div class="product-img">
+                    <img src="images/massaager2.jpg" alt="Smartphone">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Circular ZenBeats</h3>
+                    <div class="product-price">₹4999</div>
+                    <p class="product-description">Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.</p>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 - Massager -->
+            <div class="product-card" data-name="massager" data-category="health">
+                <div class="product-img">
+                    <img src="images/commoncharger.jpg" alt="Neck and Shoulder Massager">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">ZenBeats AllRounder</h3>
+                    <div class="product-price">₹699</div>
+                    <p class="product-description">Simply place your device on the cradle to power up. No ports, no cables.</p>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card" data-name="camera" data-category="electronics">
+                <div class="product-img">
+                    <img src="images/circularcharger.jpg" alt="Digital Camera">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Circular ZenBeat Charger</h3>
+                    <div class="product-price">₹499</div>
+                    <p class="product-description">Simply place your device on the cradle to power up. No ports, no cables</p>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <!-- <div class="product-card" data-name="tablet" data-category="electronics">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tablet">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Tablet</h3>
+                    <div class="product-price">$399.99</div>
+                    <p class="product-description">Versatile tablet perfect for work and entertainment.</p>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- User Dashboard (Hidden by default) -->
+    <section class="dashboard container" id="userDashboard">
+        <div class="dashboard-header">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">JD</div>
+                <div>
+                    <h2>Welcome, <span id="userName">John Doe</span></h2>
+                    <p>Your account is active</p>
+                </div>
+            </div>
+            <button class="btn btn-outline" id="logoutBtn">Log Out</button>
+        </div>
+        
+        <h3>Your Recent Orders</h3>
+        <p>No recent orders. Start shopping now!</p>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Log In</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Sign Up</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" required> I agree to the Terms and Conditions
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="switchToLogin">Log In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ZenX</h3>
+                    <p>Your trusted online store for quality products at affordable prices. We're committed to providing excellent customer service.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt">2nd floor,Manyata Tech Park ,North Banglore</i> </li>
+                        <li><i class="fas fa-phone"></i> +91 7070149450</li>
+                        <li><i class="fas fa-envelope"></i> ZenXproduct@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ZenX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data for search functionality
+        const products = [
+            {
+                id: 1,
+                name: "Premium Laptop",
+                price: "$899.99",
+                description: "High-performance laptop with latest processor and stunning display.",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                category: "electronics"
+            },
+            {
+                id: 2,
+                name: "Wireless Headphones",
+                price: "$129.99",
+                description: "Noise-cancelling headphones with premium sound quality.",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                category: "electronics"
+            },
+            {
+                id: 3,
+                name: "Smartphone",
+                price: "$699.99",
+                description: "Latest smartphone with advanced camera and long battery life.",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                category: "electronics"
+            },
+            {
+                id: 4,
+                name: "Neck & Shoulder Massager",
+                price: "$79.99",
+                description: "Relieve tension and stress with our advanced heating massager.",
+                image: "images/massager.jpg",
+                category: "health"
+            },
+            {
+                id: 5,
+                name: "Digital Camera",
+                price: "$549.99",
+                description: "Professional camera with high-resolution sensor and multiple lenses.",
+                image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                category: "electronics"
+            },
+            {
+                id: 6,
+                name: "Tablet",
+                price: "$399.99",
+                description: "Versatile tablet perfect for work and entertainment.",
+                image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                category: "electronics"
+            }
+        ];
+
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsSection = document.getElementById('searchResultsSection');
+        const searchResults = document.getElementById('searchResults');
+        const searchQuery = document.getElementById('searchQuery');
+        const productsContainer = document.getElementById('productsContainer');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        const switchToSignup = document.getElementById('switchToSignup');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const userDashboard = document.getElementById('userDashboard');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const userName = document.getElementById('userName');
+        const userAvatar = document.getElementById('userAvatar');
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            
+            if (query.length === 0) {
+                searchResultsSection.style.display = 'none';
+                productsContainer.style.display = 'grid';
+                return;
+            }
+            
+            // Filter products based on search query
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.description.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query)
+            );
+            
+            // Display search results
+            displaySearchResults(filteredProducts, query);
+        });
+
+        function displaySearchResults(results, query) {
+            searchQuery.textContent = query;
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; color: #ccc;"></i>
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search terms or browse our categories</p>
+                    </div>
+                `;
+            } else {
+                searchResults.innerHTML = results.map(product => `
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">${product.name}</h3>
+                            <div class="product-price">${product.price}</div>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-actions">
+                                <button class="btn btn-primary">Add to Cart</button>
+                                <button class="btn btn-outline">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            searchResultsSection.style.display = 'block';
+            productsContainer.style.display = 'none';
+        }
+
+        // Modal functionality
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'flex';
+        });
+
+        // Close modals
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                signupModal.style.display = 'none';
+            });
+        });
+
+        // Switch between modals
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'flex';
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (e.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            alert('Login successful! Welcome back.');
+            loginModal.style.display = 'none';
+            
+            // Show user dashboard
+            userDashboard.style.display = 'block';
+            loginBtn.style.display = 'none';
+            signupBtn.style.display = 'none';
+            
+            // Update user info
+            const name = email.split('@')[0];
+            userName.textContent = name;
+            userAvatar.textContent = name.charAt(0).toUpperCase() + name.charAt(1).toUpperCase();
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            alert('Account created successfully! Welcome to PrimeShop.');
+            signupModal.style.display = 'none';
+            
+            // Show user dashboard
+            userDashboard.style.display = 'block';
+            loginBtn.style.display = 'none';
+            signupBtn.style.display = 'none';
+            
+            // Update user info
+            userName.textContent = name;
+            userAvatar.textContent = name.split(' ').map(n => n.charAt(0).toUpperCase()).join('');
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', () => {
+            userDashboard.style.display = 'none';
+            loginBtn.style.display = 'block';
+            signupBtn.style.display = 'block';
+            alert('You have been logged out.');
+        });
+    </script>
+</body>
+
+</html>
