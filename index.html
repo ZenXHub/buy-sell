@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimeShop | Quality Products</title>
+    <title>ZenX | Quality Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -228,7 +228,7 @@
         .product-img img {
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            object-fit: contain;
             transition: transform 0.5s;
         }
 
@@ -426,6 +426,14 @@
 
         .footer-column ul li {
             margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-column ul li i {
+            margin-right: 10px;
+            margin-top: 3px;
+            min-width: 16px;
         }
 
         .footer-column ul li a {
@@ -437,12 +445,11 @@
         .footer-column ul li a:hover {
             color: white;
         }
-        .address{
-            width: 800px;
-            font-size: 13px;
-            font-weight: normal;
-            word-spacing: 2px;
         
+        .address {
+            font-size: 1rem;
+            line-height: 1.5;
+            word-spacing: normal;
         }
 
         .copyright {
@@ -462,11 +469,18 @@
 
             nav ul {
                 margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 0.75rem;
             }
 
             .header-actions {
                 width: 100%;
                 justify-content: space-between;
+                margin-top: 1rem;
             }
 
             .search-container {
@@ -477,12 +491,130 @@
                 width: 100%;
             }
 
+            .hero {
+                padding: 2.5rem 0;
+            }
+
             .hero h1 {
                 font-size: 2rem;
             }
 
             .hero p {
                 font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .product-card {
+                margin-bottom: 1rem;
+            }
+
+            .product-info {
+                padding: 1rem;
+            }
+
+            .product-title {
+                font-size: 1rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+
+            .product-description {
+                font-size: 0.8rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .footer-column ul li {
+                justify-content: center;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .search-container {
+                width: 55%;
+            }
+
+            .search-input {
+                padding: 6px 12px;
+                padding-left: 35px;
+                font-size: 0.9rem;
+            }
+
+            .search-icon {
+                left: 12px;
+            }
+
+            .auth-buttons {
+                gap: 5px;
+            }
+
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin: 2rem 0 1.5rem;
+            }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .product-img {
+                height: 150px;
+            }
+
+            .footer-column h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .address {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -544,12 +676,12 @@
             <!-- Product 1 -->
             <div class="product-card" data-name="ZenBeats" data-category="electronics">
                 <div class="product-img">
-                    <img src="images/massager.jpg" alt="Premium Laptop">
+                    <img src="images/massager.jpg" alt="ZenBeats Massager">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">ZenBeats</h3>
                     <div class="product-price">₹4999</div>
-                    <p class="product-description">Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.</p>
+                    <p class="product-description">Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.</p>
                     <div class="product-actions">
                         <button class="btn btn-primary">Add to Cart</button>
                         <button class="btn btn-outline">Details</button>
@@ -560,7 +692,7 @@
             <!-- Product 2 -->
             <div class="product-card" data-name="Zenbeat charger" data-category="electronics">
                 <div class="product-img">
-                    <img src="images/charger.jpg" alt="Wireless Headphones">
+                    <img src="images/charger.jpg" alt="ZenBeats Charger">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">ZenBeats Charger</h3>
@@ -576,12 +708,12 @@
             <!-- Product 3 -->
             <div class="product-card" data-name="Stress Releaser" data-category="electronics">
                 <div class="product-img">
-                    <img src="images/massaager2.jpg" alt="Smartphone">
+                    <img src="images/massaager2.jpg" alt="Circular ZenBeats">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Circular ZenBeats</h3>
                     <div class="product-price">₹4999</div>
-                    <p class="product-description">Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.</p>
+                    <p class="product-description">Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.</p>
                     <div class="product-actions">
                         <button class="btn btn-primary">Add to Cart</button>
                         <button class="btn btn-outline">Details</button>
@@ -589,10 +721,10 @@
                 </div>
             </div>
 
-            <!-- Product 4 - Massager -->
+            <!-- Product 4 -->
             <div class="product-card" data-name="massager" data-category="health">
                 <div class="product-img">
-                    <img src="images/commoncharger.jpg" alt="Neck and Shoulder Massager">
+                    <img src="images/commoncharger.jpg" alt="ZenBeats AllRounder">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">ZenBeats AllRounder</h3>
@@ -608,7 +740,7 @@
             <!-- Product 5 -->
             <div class="product-card" data-name="circularcharger" data-category="electronics">
                 <div class="product-img">
-                    <img src="images/circularcharger.jpg" alt="Digital Camera">
+                    <img src="images/circularcharger.jpg" alt="Circular ZenBeat Charger">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Circular ZenBeat Charger</h3>
@@ -620,23 +752,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Product 6 -->
-            <!-- <div class="product-card" data-name="tablet" data-category="electronics">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Tablet">
-                </div>
-                <div class="product-info">
-                    <h3 class="product-title">Tablet</h3>
-                    <div class="product-price">$399.99</div>
-                    <p class="product-description">Versatile tablet perfect for work and entertainment.</p>
-                    <div class="product-actions">
-                        <button class="btn btn-primary">Add to Cart</button>
-                        <button class="btn btn-outline">Details</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        </div>
     </section>
 
     <!-- User Dashboard (Hidden by default) -->
@@ -751,7 +867,7 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt address">2nd floor , Manyata Tech Park , North Banglore</i> </li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span class="address">2nd floor, Manyata Tech Park, North Bangalore</span></li>
                         <li><i class="fas fa-phone"></i> +91 7070149450</li>
                         <li><i class="fas fa-envelope"></i> ZenXproduct@gmail.com</li>
                     </ul>
@@ -770,48 +886,40 @@
                 id: 1,
                 name: "ZenBeats",
                 price: "₹4999",
-                description: "High-performance laptop with latest processor and stunning display.",
+                description: "Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.",
                 image: "images/massager.jpg",
                 category: "electronics"
             },
             {
                 id: 2,
-                name: "Circular Zenbeat",
-                price: "₹4999",
-                description: "Noise-cancelling headphones with premium sound quality.",
-                image: "images/massaager2.jpg",
+                name: "ZenBeats Charger",
+                price: "₹499",
+                description: "Simply place your device on the cradle to power up. No ports, no cables.",
+                image: "images/charger.jpg",
                 category: "electronics"
             },
             {
                 id: 3,
-                name: "ZenBeat charger",
-                price: "₹699.99",
-                description: "Latest smartphone with advanced camera and long battery life.",
+                name: "Circular ZenBeats",
+                price: "₹4999",
+                description: "Next-gen stress-relief headset designed to help you disconnect from chaos and reconnect with calm.",
                 image: "images/massaager2.jpg",
                 category: "electronics"
             },
             {
                 id: 4,
-                name: "CommonCharger",
+                name: "ZenBeats AllRounder",
                 price: "₹699",
-                description: "Relieve tension and stress with our advanced heating massager.",
+                description: "Simply place your device on the cradle to power up. No ports, no cables.",
                 image: "images/commoncharger.jpg",
-                category: "health"
-            },
-            {
-                id: 5,
-                name: "CircularCharger",
-                price: "₹499",
-                description: "Professional camera with high-resolution sensor and multiple lenses.",
-                image: "images/circularcharger.jpg",
                 category: "electronics"
             },
             {
-                id: 6,
-                name: "Tablet",
+                id: 5,
+                name: "Circular ZenBeat Charger",
                 price: "₹499",
-                description: "Versatile tablet perfect for work and entertainment.",
-                image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+                description: "Simply place your device on the cradle to power up. No ports, no cables",
+                image: "images/circularcharger.jpg",
                 category: "electronics"
             }
         ];
@@ -951,7 +1059,7 @@
             e.preventDefault();
             const name = document.getElementById('signupName').value;
             const email = document.getElementById('signupEmail').value;
-            alert('Account created successfully! Welcome to PrimeShop.');
+            alert('Account created successfully! Welcome to ZenX.');
             signupModal.style.display = 'none';
             
             // Show user dashboard
@@ -973,6 +1081,4 @@
         });
     </script>
 </body>
-
 </html>
-
